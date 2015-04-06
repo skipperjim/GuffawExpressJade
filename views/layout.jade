@@ -7,9 +7,9 @@ html
         //- Navbar with dropdowns, default color
         +nav("Guffaw", "dropdown_menu")
             +nav_item( "/", "active" ) Home
-            +nav_item( "dexter" ) Dexter
-            +nav_item( "game" ) Game
-            +nav_item( "admin/panel" ) Admin
+            +nav_item( "/dexter" ) Dexter
+            +nav_item( "/game" ) Game
+            +nav_item( "/admin/panel" ) Admin
             +nav_item_dropdown( "#" )( label="Dropdown")
                 +nav_item( "#" ) Action
                 +nav_item( "#" ) Another action
@@ -18,6 +18,7 @@ html
                 +nav_header Nav header
                 +nav_item( "#" ) Separated link
                 +nav_item( "#" ) One more separated link
+        block canvas
         .container
             block content
             include footer
