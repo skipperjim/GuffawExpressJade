@@ -2,10 +2,9 @@ window.onload = function () {
 
     var messages = [];
     var socket = io.connect('http://localhost:3000');
-    var field = document.getElementById("field");
-    var sendButton = document.getElementById("send");
-    var content = document.getElementById("content");
-    var name = document.getElementById("name");
+    var chatmsg = document.getElementById("chatmsg");
+    var sendButton = document.getElementById("sendmsg");
+    var content = document.getElementById("chatoutput");
 
     socket.on('message', function (data) {
         if (data.message) {
@@ -23,19 +22,19 @@ window.onload = function () {
     });
 
     sendButton.onclick = sendMessage = function () {
-        if (name.value == "") {
+        if (chatmsg.value == "") {
             alert("Please type your name!");
         } else {
-            var text = field.value;
+            var text = chatmsg.value;
             socket.emit('send', {
                 message: text,
                 username: name.value
             });
-            field.value = "";
+            chatmsg.value = "";
         }
     };
 
-    $("#field").keyup(function (e) {
+    $("#chatmsg").keyup(function (e) {
         if (e.keyCode == 13) {
             sendMessage();
         }
