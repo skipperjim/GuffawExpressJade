@@ -1,6 +1,23 @@
+include mixins
+
 doctype html
 html
     include header
-    body!= body  
-        block content
-        include footer
+    body(style="padding-bottom:10rem;")!= body
+        //- Navbar with dropdowns, default color
+        +nav("Guffaw", "dropdown_menu")
+            +nav_item( "/", "active" ) Home
+            +nav_item( "dexter" ) Dexter
+            +nav_item( "game" ) Game
+            +nav_item( "admin/panel" ) Admin
+            +nav_item_dropdown( "#" )( label="Dropdown")
+                +nav_item( "#" ) Action
+                +nav_item( "#" ) Another action
+                +nav_item( "#" ) Something else here
+                +nav_divider
+                +nav_header Nav header
+                +nav_item( "#" ) Separated link
+                +nav_item( "#" ) One more separated link
+        .container
+            block content
+            include footer
