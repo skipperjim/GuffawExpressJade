@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 // Database
 var mongo = require('mongoskin');
-var db = mongo.db("mongodb://localhost:27017/MongoSite2", {
+var db = mongo.db("mongodb://localhost:27017/GuffawSite", {
     native_parser: true
 });
 
@@ -89,6 +89,5 @@ app.use(function (err, req, res, next) {
         error: {}
     });
 });
-
 
 module.exports = app;

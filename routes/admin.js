@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
 /* GET admin panel view. */
 router.get('/panel', function (req, res, next) {
     res.render('admin', {
-        title: 'Admin Panel'
+        title: 'Admin Console'
     });
 });
 
@@ -30,7 +30,6 @@ router.get('/userlist', function (req, res) {
  * POST to adduser.
  */
 router.post('/adduser', function (req, res) {
-    var db = req.db;
     db.collection('userlist').insert(req.body, function (err, result) {
         res.send(
             (err === null) ? {

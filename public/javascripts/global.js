@@ -35,6 +35,7 @@ function populateTable() {
             tableContent += '<tr>';
             tableContent += '<td><a href="#" class="linkshowuser" rel="' + this.username + '">' + this.username + '</a></td>';
             tableContent += '<td>' + this.email + '</td>';
+            tableContent += '<td>' + this.password + '</td>';
             tableContent += '<td><a href="#" class="linkdeleteuser" rel="' + this._id + '">delete</a></td>';
             tableContent += '</tr>';
         });
@@ -88,10 +89,7 @@ function addUser(event) {
         var newUser = {
             'username': $('#addUser fieldset input#inputUserName').val(),
             'email': $('#addUser fieldset input#inputUserEmail').val(),
-            'fullname': $('#addUser fieldset input#inputUserFullname').val(),
-            'age': $('#addUser fieldset input#inputUserAge').val(),
-            'location': $('#addUser fieldset input#inputUserLocation').val(),
-            'gender': $('#addUser fieldset input#inputUserGender').val()
+            'password': $('#addUser fieldset input#inputUserPassword').val()
         }
 
         // Use AJAX to post the object to our adduser service

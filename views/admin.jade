@@ -2,7 +2,6 @@ extends layout
 
 block content
     h1= title
-    p Welcome my website
 
     // Wrapper
     #wrapper
@@ -29,8 +28,9 @@ block content
         #userList
             table
                 thead
-                    th UserName
+                    th Username
                     th Email
+                    th Password
                     th Delete?
                 tbody
         // /USER LIST
@@ -40,13 +40,10 @@ block content
         #addUser
             fieldset
                 input#inputUserName(type='text', placeholder='Username')
+                br
                 input#inputUserEmail(type='text', placeholder='Email')
                 br
-                input#inputUserFullname(type='text', placeholder='Full Name')
-                input#inputUserAge(type='text', placeholder='Age')
-                br
-                input#inputUserLocation(type='text', placeholder='Location')
-                input#inputUserGender(type='text', placeholder='gender')
+                input#inputUserPassword(type='password', placeholder='Password')
                 br
                 button#btnAddUser Add User
         // /ADD USER
