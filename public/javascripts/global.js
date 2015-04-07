@@ -22,7 +22,6 @@ $(document).ready(function () {
 
 // Fill table with data
 function populateTable() {
-
     // Empty content string
     var tableContent = '';
 

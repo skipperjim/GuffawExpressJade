@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var bcrypt = require('bcrypt-nodejs');
 // Database
 var mongo = require('mongoskin');
 var db = mongo.db("mongodb://localhost:27017/GuffawSite", {
@@ -50,6 +51,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //app.use(express.static(path.join(__dirname, 'build')));
 
+// Make bcrypt available to our router
+app.use(function (req, res, next) {
+    req.crypto = bcrypt;
+    next();
+});
 // Make our db accessible to our router
 app.use(function (req, res, next) {
     req.db = db;

@@ -11,8 +11,9 @@ router.get('/', function (req, res, next) {
 
 /* GET admin panel view. */
 router.get('/panel', function (req, res, next) {
+    console.log("rendering admin panel");
     res.render('admin', {
-        title: 'Admin Console'
+        title: 'Admin Panel'
     });
 });
 
@@ -30,6 +31,12 @@ router.get('/userlist', function (req, res) {
  * POST to adduser.
  */
 router.post('/adduser', function (req, res) {
+    var encrypt = req.crypto;
+    console.log("Encrypting " + req.body.password);
+    var hashedpass = encrypt.hashSync(req.body.password);
+    req.body.password = hashedpass;
+    console.log("HASH:: " + req.body.password);
+    var db = req.db;
     db.collection('userlist').insert(req.body, function (err, result) {
         res.send(
             (err === null) ? {
@@ -55,5 +62,18 @@ router.delete('/deleteuser/:id', function (req, res) {
         });
     });
 });
+
+/*
+bcrypt.hash("bacon", null, null, function (err, hash) {
+    // Store hash in your password DB.
+});
+// Load hash from your password DB.
+bcrypt.compare("bacon", hash, function (err, res) {
+    // res == true
+});
+bcrypt.compare("veggies", hash, function (err, res) {
+    // res = false
+});
+*/
 
 module.exports = router;
