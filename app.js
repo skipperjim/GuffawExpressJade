@@ -12,6 +12,7 @@ var db = mongo.db("mongodb://localhost:27017/GuffawSite", {
 
 var routes = require('./routes/index');
 var game = require('./routes/game');
+var dexter = require('./routes/dexter');
 var admin = require('./routes/admin');
 
 var app = express();
@@ -57,6 +58,7 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 app.use('/game', game);
+app.use('/dexter', dexter);
 app.use('/admin', admin);
 
 /// catch 404 and forwarding to error handler
